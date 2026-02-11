@@ -56,10 +56,10 @@ describe "The or operator" do
     x.should == true
   end
 
-  # it "is evaluated after variables are assigned" do
-  #   x = nil or true
-  #   x.should == nil
-  # end
+  it "is evaluated after variables are assigned" do
+    x = nil or true
+    x.should == nil
+  end
 
   it "has a lower precedence than the || operator" do
     x,y = nil
@@ -67,13 +67,13 @@ describe "The or operator" do
     y.should == nil
   end
 
-  # it "treats empty expressions as nil" do
-  #   (() or true).should be_true
-  #   (() or false).should be_false
-  #   (true or ()).should be_true
-  #   (false or ()).should be_nil
-  #   (() or ()).should be_nil
-  # end
+  it "treats empty expressions as nil" do
+    (() or true).should be_true
+    (() or false).should be_false
+    (true or ()).should be_true
+    (false or ()).should be_nil
+    (() or ()).should be_nil
+  end
 
   # it "has a lower precedence than 'break' in 'break true or false'" do
   #   # see also 'break true || false' above

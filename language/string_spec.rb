@@ -95,13 +95,13 @@ describe "Ruby character strings" do
     %$hey #{@ip}$.should == "hey xxx"
   end
 
-  # it "using percent with 'q', stopping interpolation" do
-  #   %q(#{@ip}).should == '#{@ip}'
-  # end
+  it "using percent with 'q', stopping interpolation" do
+    %q(#{@ip}).should == '#{@ip}'
+  end
 
-  # it "using percent with 'Q' to interpolate" do
-  #   %Q(#{@ip}).should == 'xxx'
-  # end
+  it "using percent with 'Q' to interpolate" do
+    %Q(#{@ip}).should == 'xxx'
+  end
 
   # The backslashes :
   #
@@ -110,10 +110,10 @@ describe "Ruby character strings" do
   # \xnn (hexadecimal), \cx (control x), \C-x (control x), \M-x (meta x),
   # \M-\C-x (meta control x)
 
-#   it "backslashes follow the same rules as interpolation" do
-#     "\t\n\r\f\b\a\e\s\075\x62\cx".should == "\t\n\r\f\b\a\e =b\030"
-#     '\t\n\r\f\b\a\e =b\030'.should == "\\t\\n\\r\\f\\b\\a\\e =b\\030"
-#   end
+  it "backslashes follow the same rules as interpolation" do
+    "\t\n\r\f\b\a\e\s\075\x62\cx".should == "\t\n\r\f\b\a\e =b\030"
+    '\t\n\r\f\b\a\e =b\030'.should == "\\t\\n\\r\\f\\b\\a\\e =b\\030"
+  end
 
 #   it "calls #to_s when the object is not a String" do
 #     obj = mock('to_s')
@@ -206,23 +206,23 @@ describe "Ruby character strings" do
 
 # # TODO: rewrite all specs above this
 
-# describe "Ruby String literals" do
-#   def str_concat
-#     "foo" "bar" "baz"
-#   end
+describe "Ruby String literals" do
+  def str_concat
+    "foo" "bar" "baz"
+  end
 
-#   def long_string_literals
-#     "Beautiful is better than ugly." \
-#     "Explicit is better than implicit."
-#   end
+  def long_string_literals
+    "Beautiful is better than ugly." \
+    "Explicit is better than implicit."
+  end
 
-#   it "on a single line with spaces in between are concatenated together" do
-#     str_concat.should == "foobarbaz"
-#   end
+  it "on a single line with spaces in between are concatenated together" do
+    str_concat.should == "foobarbaz"
+  end
 
-#   it "on multiple lines with newlines and backslash in between are concatenated together" do
-#     long_string_literals.should == "Beautiful is better than ugly.Explicit is better than implicit."
-#   end
+  it "on multiple lines with newlines and backslash in between are concatenated together" do
+    long_string_literals.should == "Beautiful is better than ugly.Explicit is better than implicit."
+  end
 
 #   describe "with a magic frozen comment" do
 #     it "produce the same object each time" do
@@ -254,7 +254,7 @@ describe "Ruby character strings" do
 #     end
 #   end
 
-# end
+ end
 
 # describe "Ruby String interpolation" do
 #   it "permits an empty expression" do
