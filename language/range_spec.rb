@@ -1,5 +1,5 @@
-require_relative '../spec_helper'
-require_relative 'fixtures/classes'
+#require_relative '../spec_helper'
+#require_relative 'fixtures/classes'
 
 describe "Literal Ranges" do
   it "creates range object" do
