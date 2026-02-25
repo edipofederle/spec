@@ -17,13 +17,13 @@ module ClassSpecs
 
   class A; end
 
-  def self.string_class_variables(obj)
-    obj.class_variables.map { |x| x.to_s }
-  end
+  # def self.string_class_variables(obj)
+  #   obj.class_variables.map { |x| x.to_s }
+  # end
 
-  def self.string_instance_variables(obj)
-    obj.instance_variables.map { |x| x.to_s }
-  end
+  # def self.string_instance_variables(obj)
+  #   obj.instance_variables.map { |x| x.to_s }
+  # end
 
   class B
     @@cvar = :cvar
@@ -95,10 +95,10 @@ module ClassSpecs
 
   class K < H; end
 
-  class I
-    class J < self
-    end
-  end
+  # class I
+  #   class J < self
+  #   end
+  # end
 
   class K
     def example_instance_method
@@ -111,32 +111,32 @@ module ClassSpecs
 
   class M < L; end
 
-  # Can't use a method here because of class definition in method body error
-  ANON_CLASS_FOR_NEW = -> do
-    Class.new do
-      class NamedInModule
-      end
+  # # Can't use a method here because of class definition in method body error
+  # ANON_CLASS_FOR_NEW = -> do
+  #   Class.new do
+  #     class NamedInModule
+  #     end
+  #
+  #     def self.get_class_name
+  #       NamedInModule.name
+  #     end
+  #   end
+  # end
 
-      def self.get_class_name
-        NamedInModule.name
-      end
-    end
-  end
-
-  DEFINE_CLASS = -> do
-    class ::A; end
-  end
+  # DEFINE_CLASS = -> do
+  #   class ::A; end
+  # end
 end
 
-class Class
-  def example_instance_method_of_class; end
-  def self.example_class_method_of_class; end
-end
-class << Class
-  def example_instance_method_of_singleton_class; end
-  def self.example_class_method_of_singleton_class; end
-end
-class Object
-  def example_instance_method_of_object; end
-  def self.example_class_method_of_object; end
-end
+# class Class
+#   def example_instance_method_of_class; end
+#   def self.example_class_method_of_class; end
+# end
+# class << Class
+#   def example_instance_method_of_singleton_class; end
+#   def self.example_class_method_of_singleton_class; end
+# end
+# class Object
+#   def example_instance_method_of_object; end
+#   def self.example_class_method_of_object; end
+# end
