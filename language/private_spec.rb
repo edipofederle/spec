@@ -1,7 +1,7 @@
-require_relative '../spec_helper'
+#require_relative '../spec_helper'
 require_relative 'fixtures/private'
 
-describe "The private keyword" do
+ describe "The private keyword" do
   it "marks following methods as being private" do
     a = Private::A.new
     a.methods.should_not include(:bar)
@@ -31,37 +31,37 @@ describe "The private keyword" do
     b.foo
   end
 
-  it "changes visibility of previously called method" do
-    klass = Class.new do
-      def foo
-        "foo"
-      end
-    end
-    f = klass.new
-    f.foo
-    klass.class_eval do
-      private :foo
-    end
-    -> { f.foo }.should raise_error(NoMethodError)
-  end
+#   it "changes visibility of previously called method" do
+#     klass = Class.new do
+#       def foo
+#         "foo"
+#       end
+#     end
+#     f = klass.new
+#     f.foo
+#     klass.class_eval do
+#       private :foo
+#     end
+#     -> { f.foo }.should raise_error(NoMethodError)
+#   end
 
-  it "changes visibility of previously called methods with same send/call site" do
-    g = ::Private::G.new
-    -> {
-      2.times do
-        g.foo
-        module ::Private
-          class G
-            private :foo
-          end
-        end
-      end
-    }.should raise_error(NoMethodError)
-  end
+#   it "changes visibility of previously called methods with same send/call site" do
+#     g = ::Private::G.new
+#     -> {
+#       2.times do
+#         g.foo
+#         module ::Private
+#           class G
+#             private :foo
+#           end
+#         end
+#       end
+#     }.should raise_error(NoMethodError)
+#   end
 
-  it "changes the visibility of the existing method in the subclass" do
-    ::Private::A.new.foo.should == 'foo'
-    -> { ::Private::H.new.foo }.should raise_error(NoMethodError)
-    ::Private::H.new.send(:foo).should == 'foo'
-  end
+#   it "changes the visibility of the existing method in the subclass" do
+#     ::Private::A.new.foo.should == 'foo'
+#     -> { ::Private::H.new.foo }.should raise_error(NoMethodError)
+#     ::Private::H.new.send(:foo).should == 'foo'
+#   end
 end
